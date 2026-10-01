@@ -1,1 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李成河行政士事务所 | Agent Lee Administrative Office</title>
+  <meta name="description" content="法院工作经验30年，学校暴力对策审议委员会委员。为学校暴力救济、出入境与签证、非营利社团法人、行政审判等复杂行政问题提供专业支持。">
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --primary-light: #2c5282;
+      --accent: #c9a227;
+      --bg: #f7f5f0;
+      --text: #1a202c;
+      --text-light: #4a5568;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+    .logo span {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    nav a {
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+      margin-left: 8px;
+    }
+    .lang-switch a {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--text-light);
+      transition: all 0.2s;
+    }
+    .lang-switch a:hover, .lang-switch a.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .btn-call {
+      background: var(--primary);
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-call:hover { background: var(--primary-light); }
+
+    .hero {
+      padding: 90px 0 80px;
+      background: linear-gradient(145deg, #f7f5f0 0%, #eef2f7 100%);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .hero-label {
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      line-height: 1.35;
+      color: var(--primary);
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      max-width: 480px;
+    }
+    .hero-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .hero-badge {
+      background: #e8f0fe;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #c5d4f0;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--primary-light); }
+    .btn-outline {
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-blog {
+      background: #03c75a;
+      color: white;
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-blog:hover { background: #02b350; }
+    .hero-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 40px rgba(30,58,95,0.08);
+      border: 1px solid var(--border);
+    }
+    .hero-card h3 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .hero-card ul { list-style: none; }
+    .hero-card li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .hero-card li:last-child { border-bottom: none; }
+    .hero-card li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .career {
+      background: var(--white);
+      padding: 70px 0;
+    }
+    .career-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .career-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .career-content p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+    }
+    .career-points {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .career-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+    .career-points li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .career-box {
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 36px 32px;
+      border: 1px solid var(--border);
+    }
+    .career-box .big-number {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .career-box .big-label {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+    .career-box .sub-item {
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .career-box .sub-item strong { color: var(--primary); }
+
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .section-desc {
+      color: var(--text-light);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    .services { background: var(--bg); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid transparent;
+      transition: all 0.25s;
+    }
+    .service-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(30,58,95,0.08);
+    }
+    .service-num {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .service-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      margin-top: 8px;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .consult-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .consult-box {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+    .consult-box h3 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .consult-box ol {
+      padding-left: 20px;
+      color: var(--text-light);
+    }
+    .consult-box li {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .info-list { list-style: none; }
+    .info-list li {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+    .info-list strong {
+      min-width: 70px;
+      color: var(--primary);
+    }
+    .info-list span { color: var(--text-light); }
+
+    .blog-box {
+      background: linear-gradient(135deg, #e8f8ef 0%, #f0faf4 100%);
+      border: 1px solid #b8e0c8;
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .blog-box-text h3 {
+      font-size: 1.15rem;
+      color: #1a7a3a;
+      margin-bottom: 8px;
+    }
+    .blog-box-text p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .btn-naver {
+      background: #03c75a;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-naver:hover { background: #02b350; }
+
+    .sns-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .sns-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .sns-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: #eef2f7;
+    }
+
+    .cta {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 70px 0;
+    }
+    .cta h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .cta p {
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+    .cta .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+    .cta .btn-primary:hover { background: #f0f4f8; }
+
+    footer {
+      background: #152a45;
+      color: #a0aec0;
+      padding: 50px 0 30px;
+      font-size: 0.9rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand {
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .footer-brand span {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #a0aec0;
+      margin-top: 4px;
+    }
+    footer h4 {
+      color: white;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    footer p, footer a {
+      margin-bottom: 6px;
+      display: block;
+    }
+    footer a:hover { color: white; }
+    .footer-sns a {
+      display: inline-block;
+      margin-right: 12px;
+      margin-bottom: 8px;
+    }
+    .copyright {
+      border-top: 1px solid #2d3f55;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 800px) {
+      .hero-inner, .consult-grid, .career-inner { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      nav { display: none; }
+      .header-inner { height: 64px; }
+      section { padding: 60px 0; }
+      .career { padding: 50px 0; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .blog-box { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="/zh.html" class="logo">
+        李成河行政士事务所
+        <span>Agent Lee Administrative Office</span>
+      </a>
+      <nav>
+        <a href="#career">履历介绍</a>
+        <a href="#services">主要业务</a>
+        <a href="#consult">咨询指南</a>
+        <a href="#contact">联系我们</a>
+        <div class="lang-switch">
+          <a href="/">KR</a>
+          <a href="/en.html">EN</a>
+          <a href="/zh.html" class="active">中文</a>
+        </div>
+        <a href="tel:010-7748-5765" class="btn-call">咨询电话</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-label">ADMINISTRATIVE SERVICES IN SEOUL</div>
+        <h1>复杂的行政问题，<br>我们帮您清晰梳理。</h1>
+        <p>
+          从学校暴力救济、出入境与签证，到非营利社团法人设立、行政审判。<br>
+          我们先认真倾听您的情况，再按步骤为您说明所需手续和材料。
+        </p>
+        <div class="hero-highlight">
+          <span class="hero-badge">法院工作经验 30年</span>
+          <span class="hero-badge">学校暴力对策审议委员会委员</span>
+        </div>
+        <div class="hero-btns">
+          <a href="#consult" class="btn-primary">咨询指南</a>
+          <a href="https://blog.naver.com/jikim_82" target="_blank" class="btn-blog">Naver博客</a>
+          <a href="tel:010-7748-5765" class="btn-outline">电话咨询</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>主要办理业务</h3>
+        <ul>
+          <li>学校暴力救济 · 行政审判</li>
+          <li>出入境 · 签证 · 归化</li>
+          <li>非营利社团法人设立</li>
+          <li>许可 · 各类登记</li>
+          <li>土地补偿 · 行政诉讼支持</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="career" id="career">
+    <div class="container career-inner">
+      <div class="career-content">
+        <div class="section-label">ABOUT</div>
+        <h2>以经验为基础的<br>实务型行政支持</h2>
+        <p>
+          凭借在法院工作30年积累的实务经验，以及目前担任学校暴力对策审议委员会委员所获得的现场理解，  
+          为复杂的行政问题提供准确、切实的指导。
+        </p>
+        <ul class="career-points">
+          <li>法院工作经验30年 – 对诉讼、执行及行政程序有深刻理解</li>
+          <li>学校暴力对策审议委员会委员 – 具备学校暴力案件实际审议经验</li>
+          <li>准确把握案件本质，提出切实可行的应对方案</li>
+        </ul>
+      </div>
+      <div class="career-box">
+        <div class="big-number">30年</div>
+        <div class="big-label">法院工作经验</div>
+        <div class="sub-item">
+          <strong>学校暴力对策审议委员会</strong><br>
+          目前担任委员
+        </div>
+        <div class="sub-item">
+          <strong>实务导向咨询</strong><br>
+          基于真实现场经验
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label">WHAT WE HELP WITH</div>
+      <h2 class="section-title">主要业务</h2>
+      <p class="section-desc">
+        咨询是否可行以及具体业务范围，将在确认案件内容和提交材料后进行说明。
+      </p>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>学校暴力救济</h3>
+          <p>基于学校暴力对策审议委员会委员的经验，帮助整理案件经过与程序，并指导意见书、陈述资料及行政救济应对。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>出入境 · 签证</h3>
+          <p>根据您的现状和目的，审查停留资格变更/延长、外国人邀请、归化及国籍相关手续。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>非营利社团法人</h3>
+          <p>从设立许可、章程起草、理事构成到与主管机关协商，全程支持设立过程。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>行政审判</h3>
+          <p>审查对行政机关处分的不服程序，协助准备请求书及证明材料。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <h3>许可 · 登记</h3>
+          <p>协助办理各类营业许可、资格登记、申报等与主管机关相关的手续。</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <h3>其他行政业务</h3>
+          <p>土地补偿、信息公开申请、请愿等行政相关咨询及文件起草支持。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="consult">
+    <div class="container">
+      <div class="section-label">CONSULTATION</div>
+      <h2 class="section-title">咨询指南</h2>
+      <p class="section-desc">我们先倾听您的情况，再清晰说明所需手续。</p>
+      <div class="consult-grid">
+        <div class="consult-box">
+          <h3>咨询进行步骤</h3>
+          <ol>
+            <li>请先向我们说明您目前的情况和面临的问题。</li>
+            <li>一起整理相关文件和事实关系。</li>
+            <li>说明可行的程序、预计时间表以及需要准备的材料。</li>
+            <li>必要时协助起草意见书、申请书等文件。</li>
+          </ol>
+        </div>
+        <div class="consult-box">
+          <h3>联系方式</h3>
+          <ul class="info-list">
+            <li><strong>电话</strong><span>010-7748-5765</span></li>
+            <li><strong>邮箱</strong><span>rhehe@daum.net</span></li>
+            <li><strong>KakaoTalk</strong><span>xingxia</span></li>
+            <li><strong>地址</strong><span>首尔市江北区华溪寺路16，302号</span></li>
+            <li><strong>咨询</strong><span>请事先联系后访问或电话咨询</span></li>
+          </ul>
+          <div class="sns-links">
+            <a href="https://www.youtube.com/@admin_service_agent" target="_blank" class="sns-btn">YouTube</a>
+            <a href="https://www.facebook.com/leeseongha_agent" target="_blank" class="sns-btn">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-box">
+        <div class="blog-box-text">
+          <h3>在Naver博客查看更多内容</h3>
+          <p>您可以在博客中了解学校暴力、出入境与签证、行政审判等相关的实际咨询案例和有用信息。</p>
+        </div>
+        <a href="https://blog.naver.com/jikim_82" target="_blank" class="btn-naver">前往博客 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>立即咨询</h2>
+      <p>复杂的行政手续，不必独自烦恼，随时联系我们。</p>
+      <a href="tel:010-7748-5765" class="btn-primary">拨打 010-7748-5765</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">
+            李成河行政士事务所
+            <span>Agent Lee Administrative Office</span>
+          </div>
+          <p style="margin-top:12px;">守护您权利的行政士</p>
+        </div>
+        <div>
+          <h4>联系方式</h4>
+          <p>电话: 010-7748-5765</p>
+          <p>邮箱: rhehe@daum.net</p>
+          <p>KakaoTalk: xingxia</p>
+        </div>
+        <div>
+          <h4>地址</h4>
+          <p>首尔市江北区华溪寺路16，302号</p>
+          <p style="margin-top:8px; font-size:0.85rem;">请事先联系后访问。</p>
+        </div>
+        <div>
+          <h4>SNS</h4>
+          <div class="footer-sns">
+            <a href="https://blog.naver.com/jikim_82" target="_blank">Naver博客</a>
+            <a href="https://www.youtube.com/@admin_service_agent" target="_blank">YouTube</a>
+            <a href="https://www.facebook.com/leeseongha_agent" target="_blank">Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 李成河行政士事务所. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
