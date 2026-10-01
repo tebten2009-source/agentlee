@@ -1,38 +1,521 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F-6 결혼비자 서류 대시보드</title>
-    <style>
-        body { font-family: 'Malgun Gothic', sans-serif; padding: 20px; background-color: #f4f7f6; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; border-bottom: 2px solid #009688; padding-bottom: 10px; }
-        h2 { color: #34495e; font-size: 1.2rem; margin-top: 20px; }
-        .doc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; list-style-type: none; padding: 0; }
-        .doc-list li { background: #e8f5e9; padding: 10px; border-radius: 5px; font-size: 0.95rem; }
-        .doc-list li::before { content: "✅ "; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이성하행정사사무소 | Agent Lee Administrative Office</title>
+  <meta name="description" content="학교폭력 구제, 출입국·비자, 비영리사단법인, 행정심판 등 복잡한 행정문제를 차분하게 정리해 드립니다.">
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --primary-light: #2c5282;
+      --accent: #c9a227;
+      --bg: #f7f5f0;
+      --text: #1a202c;
+      --text-light: #4a5568;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+    .logo span {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+    nav {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    nav a {
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+    .btn-call {
+      background: var(--primary);
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .btn-call:hover { background: var(--primary-light); }
+
+    /* Hero */
+    .hero {
+      padding: 90px 0 80px;
+      background: linear-gradient(145deg, #f7f5f0 0%, #eef2f7 100%);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .hero-label {
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      line-height: 1.35;
+      color: var(--primary);
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 460px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 14px 26px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--primary-light); }
+    .btn-outline {
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      padding: 13px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .hero-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 40px rgba(30,58,95,0.08);
+      border: 1px solid var(--border);
+    }
+    .hero-card h3 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .hero-card ul {
+      list-style: none;
+    }
+    .hero-card li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .hero-card li:last-child { border-bottom: none; }
+    .hero-card li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* Section common */
+    section { padding: 80px 0; }
+    .section-label {
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .section-desc {
+      color: var(--text-light);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    /* Services */
+    .services { background: var(--white); }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--bg);
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid transparent;
+      transition: all 0.25s;
+    }
+    .service-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(30,58,95,0.08);
+    }
+    .service-num {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Consult */
+    .consult-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .consult-box {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+    .consult-box h3 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .consult-box ol {
+      padding-left: 20px;
+      color: var(--text-light);
+    }
+    .consult-box li {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .info-list {
+      list-style: none;
+    }
+    .info-list li {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+    .info-list strong {
+      min-width: 70px;
+      color: var(--primary);
+    }
+    .info-list span { color: var(--text-light); }
+
+    /* CTA */
+    .cta {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 70px 0;
+    }
+    .cta h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .cta p {
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+    .cta .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+    .cta .btn-primary:hover {
+      background: #f0f4f8;
+    }
+
+    /* Footer */
+    footer {
+      background: #152a45;
+      color: #a0aec0;
+      padding: 50px 0 30px;
+      font-size: 0.9rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand {
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .footer-brand span {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #a0aec0;
+      margin-top: 4px;
+    }
+    footer h4 {
+      color: white;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    footer p, footer a {
+      margin-bottom: 6px;
+      display: block;
+    }
+    footer a:hover { color: white; }
+    .copyright {
+      border-top: 1px solid #2d3f55;
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero-inner, .consult-grid, .footer-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 { font-size: 2rem; }
+      nav { display: none; }
+      .header-inner { height: 64px; }
+      section { padding: 60px 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>F-6 Marriage Visa Application Dashboard</h1>
-        <h2>Generated Documents Summary (생성된 서류 요약)</h2>
-        <ul class="doc-list">
-            <li>사증발급신청서 (Visa application)</li>
-            <li>초청인 가족소득현황 진술서 (Inviter family income statement)</li>
-            <li>초청장 (Invitation letter)</li>
-            <li>번역자 확인서 (Translation certificate template)</li>
-            <li>KVAC 동의서 (KVAC agreement)</li>
-            <li>범죄경력조회 신청서 (Criminal record application)</li>
-            <li>외국인 배우자의 결혼배경 진술서 (Spouse marriage background statement)</li>
-            <li>신원보증서 (Identity guarantee)</li>
-            <li>요건면제 입증서류 (Visa requirement exemption request)</li>
-        </ul>
 
-        <div style="margin-top: 30px; text-align: center;">
-            <a href="/agentlee/blog/" style="display: inline-block; padding: 12px 30px; background: #009688; color: white; text-decoration: none; border-radius: 8px; font-size: 1rem; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.3s;">📋 공지사항 보기</a>
-        </div>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        이성하행정사사무소
+        <span>Agent Lee Administrative Office</span>
+      </a>
+      <nav>
+        <a href="#services">주요 업무</a>
+        <a href="#consult">상담 안내</a>
+        <a href="#contact">문의하기</a>
+        <a href="tel:010-7748-5765" class="btn-call">상담 전화</a>
+      </nav>
     </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-label">ADMINISTRATIVE SERVICES IN SEOUL</div>
+        <h1>복잡한 행정문제,<br>차분하게 정리합니다.</h1>
+        <p>
+          학교폭력 구제부터 출입국·비자, 비영리사단법인 설립, 행정심판까지.<br>
+          현재 상황을 먼저 듣고 필요한 절차와 서류를 순서대로 안내합니다.
+        </p>
+        <div class="hero-btns">
+          <a href="#consult" class="btn-primary">상담 안내 보기</a>
+          <a href="tel:010-7748-5765" class="btn-outline">전화로 문의하기</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>주요 취급 업무</h3>
+        <ul>
+          <li>학교폭력 구제 · 행정심판</li>
+          <li>출입국 · 비자 · 귀화</li>
+          <li>비영리사단법인 설립</li>
+          <li>인허가 · 각종 등록</li>
+          <li>토지보상 · 행정소송 지원</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label">WHAT WE HELP WITH</div>
+      <h2 class="section-title">주요 업무</h2>
+      <p class="section-desc">
+        상담 가능 여부와 구체적인 업무 범위는 사안의 내용과 제출자료를 확인한 후 안내드립니다.
+      </p>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>학교폭력 구제</h3>
+          <p>사건의 경위와 현재 절차를 정리하고, 학생과 보호자에게 필요한 의견서·진술자료·행정구제 대응을 안내합니다.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>출입국 · 비자</h3>
+          <p>체류자격 변경·연장, 외국인 초청, 귀화·국적 관련 절차를 현재 상황과 목적에 맞춰 검토합니다.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>비영리사단법인</h3>
+          <p>설립 허가부터 정관 작성, 임원 구성, 관할 관청 협의까지 설립 전 과정을 단계별로 지원합니다.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>행정심판</h3>
+          <p>행정청의 처분에 대한 불복 절차를 검토하고, 청구서 작성과 입증자료 준비를 도와드립니다.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <h3>인허가 · 등록</h3>
+          <p>각종 영업허가, 자격등록, 신고 업무 등 관할 관청과의 절차를 정리해 드립니다.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <h3>기타 행정업무</h3>
+          <p>토지보상, 정보공개청구, 진정·탄원 등 행정 전반의 상담과 서류 작성을 지원합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consult -->
+  <section id="consult">
+    <div class="container">
+      <div class="section-label">CONSULTATION</div>
+      <h2 class="section-title">상담 안내</h2>
+      <p class="section-desc">
+        상황을 먼저 듣고, 필요한 절차를 쉽게 설명드립니다.
+      </p>
+
+      <div class="consult-grid">
+        <div class="consult-box">
+          <h3>상담 진행 순서</h3>
+          <ol>
+            <li>현재 상황과 겪고 계신 문제를 먼저 들려주세요.</li>
+            <li>관련 서류와 사실관계를 함께 정리합니다.</li>
+            <li>가능한 절차와 예상 일정, 준비할 서류를 안내합니다.</li>
+            <li>필요시 의견서·신청서 등 서류 작성을 지원합니다.</li>
+          </ol>
+        </div>
+        <div class="consult-box">
+          <h3>연락처 및 안내</h3>
+          <ul class="info-list">
+            <li>
+              <strong>전화</strong>
+              <span>010-7748-5765</span>
+            </li>
+            <li>
+              <strong>이메일</strong>
+              <span>rhehe@daum.net</span>
+            </li>
+            <li>
+              <strong>카카오톡</strong>
+              <span>xingxia</span>
+            </li>
+            <li>
+              <strong>주소</strong>
+              <span>서울시 강북구 화계사길 16, 302호</span>
+            </li>
+            <li>
+              <strong>상담</strong>
+              <span>사전 연락 후 방문 또는 전화 상담</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>지금 바로 상담받아보세요</h2>
+      <p>복잡한 행정 절차, 혼자 고민하지 마시고 편하게 연락 주세요.</p>
+      <a href="tel:010-7748-5765" class="btn-primary">010-7748-5765 전화하기</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">
+            이성하행정사사무소
+            <span>Agent Lee Administrative Office</span>
+          </div>
+          <p style="margin-top:12px;">권리를 지켜드리는 행정사</p>
+        </div>
+        <div>
+          <h4>연락처</h4>
+          <p>전화: 010-7748-5765</p>
+          <p>이메일: rhehe@daum.net</p>
+          <p>카카오톡: xingxia</p>
+        </div>
+        <div>
+          <h4>오시는 길</h4>
+          <p>서울시 강북구 화계사길 16, 302호</p>
+          <p style="margin-top:8px; font-size:0.85rem;">사전 연락 후 방문 부탁드립니다.</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 이성하행정사사무소. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
