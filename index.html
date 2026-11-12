@@ -39,6 +39,17 @@
       align-items: center;
       height: 72px;
     }
+    .mobile-board-link {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
     .logo {
       display: flex;
       flex-direction: column;
@@ -507,6 +518,7 @@
       .hero-inner, .consult-grid, .career-inner { grid-template-columns: 1fr; }
       .hero h1 { font-size: 2rem; }
       nav { display: none; }
+      .mobile-board-link { display: inline-flex; }
       .header-inner { height: 64px; }
       section { padding: 60px 0; }
       .career { padding: 50px 0; }
@@ -536,6 +548,7 @@
         </div>
         <a href="tel:010-7748-5765" class="btn-call">상담 전화</a>
       </nav>
+      <a href="/blog/" class="mobile-board-link">게시판</a>
     </div>
   </header>
 
