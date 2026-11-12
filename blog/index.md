@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 마음공부 게시판
+title: 게시판
 permalink: /blog/
 ---
 
@@ -23,13 +23,13 @@ permalink: /blog/
 
 <main class="mind-board">
   <header class="mind-board-header">
-    <p class="mind-board-label">마음을 살펴보는 글</p>
-    <h1>마음공부 게시판</h1>
-    <p class="mind-board-intro">일상에서 만나는 마음의 움직임과 알아차림의 연습을 함께 살펴봅니다. 새 글은 이 목록에 차례로 추가됩니다.</p>
+    <p class="mind-board-label">행정사 소식 · 정보</p>
+    <h1>게시판</h1>
+    <p class="mind-board-intro">행정사 업무와 관련된 정보와 소식을 모아 제공합니다. 새 글은 최신순으로 이 목록에 추가됩니다.</p>
   </header>
 
   <ul class="mind-post-list">
-    {% for post in site.categories["마음공부"] %}
+    {% for post in site.posts %}
     <li class="mind-post-card">
       <a class="mind-post-title" href="{{ post.url }}">{{ post.title }}</a>
       <div class="mind-post-meta">{{ post.date | date: "%Y년 %m월 %d일" }} · {{ post.categories | join: ", " }}</div>
