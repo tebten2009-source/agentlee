@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 게시판
+title: 
 permalink: /blog/
 ---
 
