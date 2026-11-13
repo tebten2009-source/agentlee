@@ -1,5 +1,5 @@
-title: "게시판"
-description: "행정사 소식 · 정보"
+title: "이성하행정사사무소"
+description: "행정사 업무 관련 소식과 정보를 제공하는 게시판입니다."
 baseurl: ""
 url: "https://tebten2009-source.github.io/agentlee"
 theme: minima
